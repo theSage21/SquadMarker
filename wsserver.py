@@ -46,10 +46,12 @@ async def home(request):
     q = await db.markings.count()
     u, p = set(), set()
     async for i in db.markings.find(projection={"ident": 1}):
-        u.add(i['ident'])
-        p.add(i['url'])
+        if 'ident' in i:
+            u.add(i['ident'])
+        if 'url' in i:
+            p.add(i['url'])
     html = html.format(q=q, u=len(u), p=len(p))
-    return html
+    return web.Response(text=html)
 
 
 if __name__ == '__main__':
