@@ -47,7 +47,7 @@ def mark():
            "stamp": datetime.utcnow()}
     doc.update(dict(bottle.request.json))
     db.markings.insert_one(doc)
-    return 'OK'
+    return {"status": True}
 
 
 app.run(debug=True, port=PORT, host='0.0.0.0')
