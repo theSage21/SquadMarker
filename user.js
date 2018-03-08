@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SquadMarker
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Mark Questions and Answers on any page from the Internet
 // @updateURL    https://raw.githubusercontent.com/theSage21/SquadMarker/master/user.js
 // @downloadURL  https://raw.githubusercontent.com/theSage21/SquadMarker/master/user.js
