@@ -42,17 +42,10 @@ def home():
 
 @app.post('/mark')
 def mark():
-    question = bottle.request.json.get('question')
-    answer = bottle.request.json.get('answer')
-    html = bottle.request.json.get('html')
-    ident = bottle.request.json.get('ident')
     headers = bottle.headers
-    doc = {"question": question,
-           "answer": answer,
-           "html": html,
-           "headers": headers,
-           "ident": ident,
+    doc = {"headers": headers,
            "stamp": datetime.utcnow()}
+    doc.update(dict(bottle.request.json))
     db.markings.insert_one(doc)
     return 'OK'
 

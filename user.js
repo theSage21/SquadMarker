@@ -12,6 +12,7 @@
 // ==/UserScript==
 
 (function() {
+    var backend_url = "https://stark-springs-69888.herokuapp.com/mark";
     function makeid() {
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -32,12 +33,20 @@
         var ident = Cookies.get("squadMarkerId");
         if (question !== null){
             if (question !== ""){
-                var payload = {"question": question, "answer": selection
+                var payload = {"question": question, "answer": selection,
+                               "html": html, "ident": ident};
+                $.ajax({url: backend_url,
+                    type: "post", contentType: "application/json",
+                    data: JSON.stringify(payload),
+                    success: function (){
+                        console.log('reported');
+                }});
+
                                
                 console.log(question);
                 console.log(selection);
                 console.log(html);
-                consoel.log(ident);
+                console.log(ident);
             }
         }
     }
