@@ -32,7 +32,7 @@ async def mark(request):
 
 
 async def home(request):
-    html = '''
+    html = '''<!DOCTYPE html><html><body>
     <b>Squad Collection</b>
     Read <a href='https://github.com/theSage21/SquadMarker'>Project</a> for more.
 
@@ -41,7 +41,7 @@ async def home(request):
     Questions asked     : {q}
     Unique users        : {u}
     Pages covered       : {p}
-    </pre>
+    </pre></body></html>
     '''
     q = await db.markings.count()
     u, p = set(), set()
