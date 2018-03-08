@@ -2,8 +2,10 @@
 // @name         SquadMarker
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  try to take over the world!
-// @author       You
+// @description  Mark Questions and Answers on any page from the Internet
+// @updateURL    https://raw.githubusercontent.com/theSage21/SquadMarker/master/user.js
+// @downloadURL  https://raw.githubusercontent.com/theSage21/SquadMarker/master/user.js
+// @author       Arjoonn Sharma
 // @match        https://en.wikipedia.org/*
 // @grant        none
 // @require https://code.jquery.com/jquery-3.2.1.min.js
