@@ -42,7 +42,7 @@ def home():
 
 @app.post('/mark')
 def mark():
-    headers = bottle.headers
+    headers = dict(bottle.request.headers)
     doc = {"headers": headers,
            "stamp": datetime.utcnow()}
     doc.update(dict(bottle.request.json))
