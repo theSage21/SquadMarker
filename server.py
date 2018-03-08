@@ -45,11 +45,13 @@ def mark():
     question = bottle.request.json.get('question')
     answer = bottle.request.json.get('answer')
     html = bottle.request.json.get('html')
+    ident = bottle.request.json.get('ident')
     headers = bottle.headers
     doc = {"question": question,
            "answer": answer,
            "html": html,
            "headers": headers,
+           "ident": ident,
            "stamp": datetime.utcnow()}
     db.insert_one(doc)
     return 'OK'
