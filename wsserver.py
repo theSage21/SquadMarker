@@ -23,7 +23,7 @@ async def mark(request):
         if msg.type == WSMsgType.text:
             data = json.loads(msg.data)
             data['stamp'] = datetime.utcnow()
-            data['init'] = result
+            data['init'] = result.insert_id
             await db.markings.insert_one(data)
     return ws
 
