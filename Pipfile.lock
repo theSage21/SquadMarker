@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "29a92279c43e375c9f1063a43545f29623bce53ff7493a87700dfb97e7bbd958"
+            "sha256": "326c8ee7173f4c4ac868c6d2dbed698be4bc7eb32260eac0a99ec6456775fcbe"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -54,6 +54,13 @@
             ],
             "version": "==0.7.0"
         },
+        "aiohttp-jinja2": {
+            "hashes": [
+                "sha256:cec74ef11b04b833b46505a7a434eb6cac9dbf94f6f288b05a0deed5f25c4f92",
+                "sha256:8d243a5bb67f288da4baddedb8409fa99a8eb53eea88540abce91596bd4041df"
+            ],
+            "version": "==0.16.0"
+        },
         "async-timeout": {
             "hashes": [
                 "sha256:d3a195a827b0f4068d1616ae2da04aac62e365d14f2b13dbc071f9feed9db4e2",
@@ -93,6 +100,19 @@
                 "sha256:1293f030bc608e9aa9cdee72aa93c1521bbb9c7698068c61c9ada6772162b979"
             ],
             "version": "==1.0.1"
+        },
+        "jinja2": {
+            "hashes": [
+                "sha256:74c935a1b8bb9a3947c50a54766a969d4846290e1e788ea44c1392163723c3bd",
+                "sha256:f84be1bb0040caca4cea721fcbbbbd61f9be9464ca236387158b0feea01914a4"
+            ],
+            "version": "==2.10"
+        },
+        "markupsafe": {
+            "hashes": [
+                "sha256:a6be69091dac236ea9c6bc7d012beab42010fa914c459791d627dad4910eb665"
+            ],
+            "version": "==1.0"
         },
         "motor": {
             "hashes": [

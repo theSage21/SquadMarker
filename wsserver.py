@@ -32,16 +32,17 @@ async def mark(request):
 
 
 async def home(request):
-    html = '''<!DOCTYPE html><html><body>
-    <b>Squad Collection</b>
-    Read <a href='https://github.com/theSage21/SquadMarker'>Project</a> for more.
+    html = '''
+    Squad Collection
+    ================
 
 
-    <pre>
+    https://github.com/theSage21/SquadMarker
+
+
     Questions asked     : {q}
     Unique users        : {u}
     Pages covered       : {p}
-    </pre></body></html>
     '''
     q = await db.markings.count()
     u, p = set(), set()

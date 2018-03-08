@@ -14,6 +14,7 @@ aiohttp = "*"
 aiohttp-cors = "*"
 motor = "*"
 ujson = "*"
+"aiohttp-jinja2" = "*"
 
 
 [dev-packages]
