@@ -15,7 +15,7 @@ db = client[dbname]
 
 
 async def mark(request):
-    ws = web.WebSocketResponse()
+    ws = web.WebSocketResponse(heartbeat=30)
     await ws.prepare(request)
     ident = (await ws.receive()).data
     url = (await ws.receive()).data
