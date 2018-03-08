@@ -11,6 +11,7 @@ app = bottle.Bottle()
 dbname = MONGO_URL.split('/')[-1]
 client = pymongo.MongoClient(MONGO_URL)
 db = client[dbname]
+bottle.BaseRequest.MEMFILE_MAX = 1024 * 1024
 
 string = 'Origin, Accept , Content-Type, X-Requested-With, X-CSRF-Token'
 CORS_HEADERS = {
@@ -50,4 +51,4 @@ def mark():
     return {"status": True}
 
 
-app.run(debug=True, port=PORT, host='0.0.0.0')
+app.run(debug=True, port=PORT, host='0.0.0.0', server='paste')

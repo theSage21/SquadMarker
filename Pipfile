@@ -9,6 +9,11 @@ name = "pypi"
 
 bottle = "*"
 pymongo = "*"
+paste = "*"
+aiohttp = "*"
+aiohttp-cors = "*"
+motor = "*"
+ujson = "*"
 
 
 [dev-packages]
