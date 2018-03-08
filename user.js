@@ -6,7 +6,7 @@
 // @updateURL    https://raw.githubusercontent.com/theSage21/SquadMarker/master/user.js
 // @downloadURL  https://raw.githubusercontent.com/theSage21/SquadMarker/master/user.js
 // @author       Arjoonn Sharma
-// @match        https://en.wikipedia.org/*
+// @match        https://*.wikipedia.org/*
 // @grant        none
 // @require https://code.jquery.com/jquery-3.2.1.min.js
 // @require https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js
