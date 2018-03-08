@@ -45,7 +45,7 @@ async def home(request):
     '''
     q = await db.markings.count()
     u, p = set(), set()
-    async for i in db.markings.find(project={"ident": 1}):
+    async for i in db.markings.find(projection={"ident": 1}):
         u.add(i['ident'])
         p.add(i['url'])
     html = html.format(q=q, u=len(u), p=len(p))
