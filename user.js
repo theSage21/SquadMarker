@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SquadMarker
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  Mark Questions and Answers on any page from the Internet
 // @updateURL    https://raw.githubusercontent.com/theSage21/SquadMarker/master/user.js
 // @downloadURL  https://raw.githubusercontent.com/theSage21/SquadMarker/master/user.js
@@ -58,9 +58,9 @@
     var ws = new WebSocket(backend_url);
 
     ws.onopen = function(evt) {
-        ws.send(ident);
-        ws.send(document.location.href);
-        ws.send(text);
+        var init = {"ident": ident, "url": document.location.href,
+                    "text": text};
+        ws.send(JSON.stringify(init));
     };
 
 

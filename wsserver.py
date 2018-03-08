@@ -17,16 +17,12 @@ db = client[dbname]
 async def mark(request):
     ws = web.WebSocketResponse(heartbeat=30)
     await ws.prepare(request)
-    ident = (await ws.receive()).data
-    url = (await ws.receive()).data
-    html = (await ws.receive()).data
+    init = json.loads((await ws.receive()).data)
     async for msg in ws:
         if msg.type == WSMsgType.text:
             data = json.loads(msg.data)
-            data['html'] = html
             data['stamp'] = datetime.utcnow()
-            data['ident'] = ident
-            data['url'] = url
+            data.update(init)
             await db.markings.insert_one(data)
     return ws
 
