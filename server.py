@@ -53,7 +53,7 @@ def mark():
            "headers": headers,
            "ident": ident,
            "stamp": datetime.utcnow()}
-    db.insert_one(doc)
+    db.markings.insert_one(doc)
     return 'OK'
 
 
