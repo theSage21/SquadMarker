@@ -31,9 +31,31 @@ async def mark(request):
     return ws
 
 
+async def home(request):
+    html = '''
+    <b>Squad Collection</b>
+    Read <a href='https://github.com/theSage21/SquadMarker'>Project</a> for more.
+
+
+    <pre>
+    Questions asked     : {q}
+    Unique users        : {u}
+    Pages covered       : {p}
+    </pre>
+    '''
+    q = await db.markings.count()
+    u, p = set(), set()
+    async for i in db.markings.find(project={"ident": 1}):
+        u.add(i['ident'])
+        p.add(i['url'])
+    html = html.format(q=q, u=len(u), p=len(p))
+    return html
+
+
 if __name__ == '__main__':
     app = web.Application()
     app.router.add_get('/mark', mark)
+    app.router.add_get('/', home)
     corsconfig = {"*": aiohttp_cors.ResourceOptions(allow_credentials=True,
                                                     expose_headers="*",
                                                     allow_headers="*")}
