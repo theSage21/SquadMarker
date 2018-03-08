@@ -18,11 +18,12 @@ async def mark(request):
     ws = web.WebSocketResponse(heartbeat=30)
     await ws.prepare(request)
     init = json.loads((await ws.receive()).data)
+    result = await db.initials.insert_one(init)
     async for msg in ws:
         if msg.type == WSMsgType.text:
             data = json.loads(msg.data)
             data['stamp'] = datetime.utcnow()
-            data.update(init)
+            data['init'] = result
             await db.markings.insert_one(data)
     return ws
 
