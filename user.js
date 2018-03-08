@@ -12,7 +12,9 @@
 // ==/UserScript==
 
 (function() {
-    var backend_url = "https://stark-springs-69888.herokuapp.com/mark";
+    var backend_url = 'wss://stark-springs-69888.herokuapp.com/mark';
+
+
     function makeid() {
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -23,30 +25,16 @@
         return text;
     }
 
-    function markAnswer(){
+    function markAnswer(ws){
         var selection = document.getSelection().toString();
         if (selection === ""){
             alert("You have to select some text as answer first!");
         }
-        var question = window.prompt(selection + "\n\n\nEnter a question");
-        var html = document.body.outerHTML;
-        var ident = Cookies.get("squadMarkerId");
+        var question = window.prompt(selection);
         if (question !== null){
             if (question !== ""){
-                var payload = {"question": question, "answer": selection,
-                               "html": html, "ident": ident};
-                $.ajax({url: backend_url,
-                    type: "post", contentType: "application/json",
-                    data: JSON.stringify(payload),
-                    success: function (){
-                        console.log('reported');
-                }});
-
-                               
-                console.log(question);
-                console.log(selection);
-                console.log(html);
-                console.log(ident);
+                var payload = {"question": question, "answer": selection};
+                ws.send(JSON.stringify(payload));
             }
         }
     }
@@ -56,11 +44,27 @@
     button.style = "top:0;right:0;position:fixed;z-index: 9999";
 
     var ident = Cookies.get("squadMarkerId");
+
     console.log(ident);
     if (ident === undefined){
         console.log("no cookie");
         Cookies.set("squadMarkerId", makeid());
     }
+
+    var text = document.body.outerHTML;
+    ident = Cookies.get("squadMarkerId");
+    var ws = new WebSocket(backend_url);
+
+    ws.onopen = function(evt) {
+        ws.send(ident);
+        ws.send(document.location.href);
+        ws.send(text);
+    };
+
+
+
     document.body.appendChild(button);
-    button.onclick = markAnswer;
+    button.onclick = function (){
+        markAnswer(ws);
+    };
 })();

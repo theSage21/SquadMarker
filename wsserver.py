@@ -18,6 +18,7 @@ async def mark(request):
     ws = web.WebSocketResponse()
     await ws.prepare(request)
     ident = (await ws.receive()).data
+    url = (await ws.receive()).data
     html = (await ws.receive()).data
     async for msg in ws:
         if msg.type == WSMsgType.text:
@@ -25,6 +26,7 @@ async def mark(request):
             data['html'] = html
             data['stamp'] = datetime.utcnow()
             data['ident'] = ident
+            data['url'] = url
             await db.markings.insert_one(data)
     return ws
 
