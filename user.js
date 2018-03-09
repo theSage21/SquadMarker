@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SquadMarker
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  Mark Questions and Answers on any page from the Internet
 // @updateURL    https://raw.githubusercontent.com/theSage21/SquadMarker/master/user.js
 // @downloadURL  https://raw.githubusercontent.com/theSage21/SquadMarker/master/user.js
@@ -41,9 +41,6 @@
         }
     }
 
-    var button = document.createElement("button");
-    button.innerHTML = "SQUADMARK";
-    button.style = "top:0;right:0;position:fixed;z-index: 9999";
 
     var ident = Cookies.get("squadMarkerId");
 
@@ -61,12 +58,16 @@
         var init = {"ident": ident, "url": document.location.href,
                     "text": text};
         ws.send(JSON.stringify(init));
+        // ----------------------- ready for work
+        var button = document.createElement("button");
+        button.innerHTML = "SQUADMARK";
+        button.style = "top:0;right:0;position:fixed;z-index: 9999;border: 0; background: none; box-shadow: none; border-radius: 0px;";
+        button.onclick = function (){
+            markAnswer(ws);
+        };
+        document.body.appendChild(button);
     };
 
 
 
-    document.body.appendChild(button);
-    button.onclick = function (){
-        markAnswer(ws);
-    };
 })();
