@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SquadMarker
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.5
 // @description  Mark Questions and Answers on any page from the Internet
 // @updateURL    https://raw.githubusercontent.com/theSage21/SquadMarker/master/user.js
 // @downloadURL  https://raw.githubusercontent.com/theSage21/SquadMarker/master/user.js
@@ -61,7 +61,7 @@
         // ----------------------- ready for work
         var button = document.createElement("button");
         button.innerHTML = "SQUADMARK";
-        button.style = "top:0;right:0;position:fixed;z-index: 9999;border: 0; background: none; box-shadow: none; border-radius: 0px;";
+        button.style = "top:0;right:0;position:fixed;z-index: 9999;border: 1px solid; background: #cffb6c; border-radius: 5px;";
         button.onclick = function (){
             markAnswer(ws);
         };
