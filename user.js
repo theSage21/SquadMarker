@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SquadMarker
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.6
 // @description  Mark Questions and Answers on any page from the Internet
 // @updateURL    https://raw.githubusercontent.com/theSage21/SquadMarker/master/user.js
 // @downloadURL  https://raw.githubusercontent.com/theSage21/SquadMarker/master/user.js
@@ -50,7 +50,7 @@
         Cookies.set("squadMarkerId", makeid());
     }
 
-    var text = document.body.outerHTML;
+    var text = $("#content").text();
     ident = Cookies.get("squadMarkerId");
     var ws = new WebSocket(backend_url);
 
